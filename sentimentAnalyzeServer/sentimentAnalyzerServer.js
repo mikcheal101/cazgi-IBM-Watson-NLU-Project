@@ -48,7 +48,7 @@ app.get("/url/emotion", (req, res) => {
             return res.send(analysisResults.result.emotion.document.emotion);
         })
         .catch(err => {
-            console.log('error:', err);
+            return res.status(400).send(err.message);
         });
 });
 
@@ -66,7 +66,7 @@ app.get("/url/sentiment", (req, res) => {
             return res.send(analysisResults.result.sentiment.document.label);
         })
         .catch(err => {
-            console.log('error:', err);
+            return res.status(400).send(err.message);
         });
 });
 
@@ -86,11 +86,12 @@ app.get("/text/emotion", (req, res) => {
             return res.send(analysisResults.result.emotion.document.emotion);
         })
         .catch(err => {
-            console.log('error:', err);
+            return res.status(400).send(err.message);
         });
 });
 
 app.get("/text/sentiment", (req, res) => {
+    console.log("text:", req.query.text);
     const analyzeParams = {
         'text': req.query.text,
         'features': {
@@ -104,7 +105,7 @@ app.get("/text/sentiment", (req, res) => {
             return res.send(analysisResults.result.sentiment.document.label);
         })
         .catch(err => {
-            console.log('error:', err);
+            return res.status(400).send(err.message);
         });
 });
 
