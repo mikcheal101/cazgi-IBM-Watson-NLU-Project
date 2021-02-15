@@ -7,25 +7,16 @@ class EmotionTable extends React.Component {
     items: []
   };
 
-  constructor(props) {
-    super(props);
-    console.log("loaded");
-  }
-
   componentDidMount() {
-    // console.log(this.props.emotions.map(item => item));
-    // console.log(this.state);
     for (var item in this.props.emotions)
       this.state.items.push(<tr><td>{item}</td><td>{this.props.emotions[item]}</td></tr>);
-    console.log(this.state.items);
+    this.setState(this.state);
   }
 
   render() {
     return (
-      <div>
-        {/*You can remove this line and the line below. */}
-        {/* {JSON.stringify(this.props.emotions)} */}
-        <table className="table table-bordered">
+      <div className="text-center">
+        <table className="table table-bordered w-50 mt-4 offset-3">
           <tbody>
             {(this.state.items.map(row => row))}
           </tbody>
